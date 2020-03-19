@@ -18,6 +18,7 @@ class App extends Component {
   };
 
   dataShow = () => {
+    debugger;
     if (this.state.showdata) {
       return this.props.userData.map((item, index) => {
         if (item.permission) {
@@ -26,9 +27,7 @@ class App extends Component {
               <td>{item.name}</td>
               <td>{item.message}</td>
               <button key={index}>Update</button>
-              <button key={index}>
-                Delete
-              </button>
+              <button key={index}>Delete</button>
             </tr>
           );
         }
@@ -64,7 +63,7 @@ class App extends Component {
             />
             <label htmlFor="enable">Enabled</label>
           </div>
-          <button onClick={()=>this.clickHandler}>Create</button>
+          <button onClick={() => this.clickHandler()}>Create</button>
           <button
             onClick={() => this.setState({ showdata: !this.state.showdata })}
           >
@@ -83,9 +82,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return { userData: state };
-}
+};
 
 export default connect(mapStateToProps, dispatch => ({
   addUpData: (name, message, permission) =>

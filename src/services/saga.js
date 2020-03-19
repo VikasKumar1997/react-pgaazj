@@ -7,7 +7,7 @@ function* handleAddData(action) {
   try {
     yield put(addData$.success(action.payload));
   } catch (error) {
-    console.log(error);
+    yield put(addData$.failure());  
   } finally {
     yield put(addData$.fulfill());
   }
